@@ -1,0 +1,15 @@
+{
+  "name": "testapp",
+  "version": "1.0.0",
+  "description": "Test App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sara",
+  "license": "ISC",
+  "dependencies": {
+    "geolib": "^2.0.24",
+    "taglib2": "^2.9.6"
+  }
+}
