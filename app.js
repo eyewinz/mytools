@@ -91,3 +91,20 @@ for (corObj of corArrObj){
 //     return relDirMap[cordinalDirection];
 // }
 
+const dirMap = {
+    Up: 'up',
+    Down: 'down',
+    StairsUp: 'stairsup',
+    StairsDown: 'stairsdown',
+    LiftUp: 'elevatorup',
+    LiftDown: 'elevatordown',
+    Left: 'left',
+    Right: 'right',
+    Walk: 'forward'
+};
+
+let direction = dirMap.StairsDown;
+
+if (~[dirMap.Down, dirMap.LiftDown, dirMap.Up, dirMap.StairsUp].indexOf(direction)) {
+    console.log("This wordked");
+}

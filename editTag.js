@@ -2,41 +2,42 @@ const taglib = require('taglib2')
 let tags;
 let fs = require('fs');
 
-let dir = '/Users/sarav/Downloads/Music/Devotional/Songs';
-// fs.readdir(dir, function(err, filenames) {
-//     if (err) {
-//         onError(err);
-//         return;
-//     }
-//     filenames.forEach(function(filename) {
-//         let fullfile = dir+'/'+filename;
-//         console.log(fullfile);
-//         console.log("---------------------------------------");
-//         tags = taglib.readTagsSync(fullfile);
-//         console.log(tags);
-//         console.log("------------------XX-------------------");
-//     });
-
-// });
+let dir = '/Users/sarav/Downloads/Music/Instrumental/Titanic';
 
 fs.readdir(dir, function(err, filenames) {
     if (err) {
-        onError(err);
+        console.log(err);
         return;
     }
     let props = {
-        album: 'Devotional',
-        artist: 'Songs'
+        artist: 'Instrumental',
+        albumartist: 'Titanic',
+        genre: 'Instrumental',
+        composer: 'Instrumental',
+        genre: 'Instrumental',
+        comment: 'Instrumental',
+        album: 'Instrumental'
       }
 
     filenames.forEach(function(filename) {
-        let fullfile = dir+'/'+filename;
-        console.log(fullfile);
-        console.log("---------------------------------------");
-        taglib.writeTagsSync(fullfile, props)
-        tags = taglib.readTagsSync(fullfile);
-        console.log(tags);
-        console.log("------------------XX-------------------");
+        if(filename != '.DS_Store'){
+
+            let fullFileName = dir+'/'+filename;
+            console.log(fullFileName);
+            tags = taglib.readTagsSync(fullFileName);
+
+
+            let len = filename.indexOf('.mp3');
+            let title = filename.substring(0,len);
+            title = title.replace(/_+/g, ' ');
+            title = title.replace(/\s+/g, ' ');
+            props.title = title // Using filename as title
+
+            console.log(tags);
+            console.log("---------------------------------------");
+
+            //taglib.writeTagsSync(fullFileName, props)
+        }
     });
 
 });
