@@ -2,7 +2,7 @@ const taglib = require('taglib2')
 let tags;
 let fs = require('fs');
 
-let dir = '/Users/sarav/Downloads/Music/Instrumental/Titanic';
+let dir = '/Users/sarav/Desktop/Ilangai\ Jeyaraj/Thirukkural';
 
 fs.readdir(dir, function(err, filenames) {
     if (err) {
@@ -10,13 +10,14 @@ fs.readdir(dir, function(err, filenames) {
         return;
     }
     let props = {
-        artist: 'Instrumental',
-        albumartist: 'Titanic',
-        genre: 'Instrumental',
-        composer: 'Instrumental',
-        genre: 'Instrumental',
-        comment: 'Instrumental',
-        album: 'Instrumental'
+        artist: '',
+        albumartist: '',
+        genre: '',
+        composer: '',
+        genre: '',
+        comment: '',
+        album: '',
+        pictures: null
       }
 
     filenames.forEach(function(filename) {
@@ -36,7 +37,7 @@ fs.readdir(dir, function(err, filenames) {
             console.log(tags);
             console.log("---------------------------------------");
 
-            //taglib.writeTagsSync(fullFileName, props)
+            taglib.writeTagsSync(fullFileName, props)
         }
     });
 
